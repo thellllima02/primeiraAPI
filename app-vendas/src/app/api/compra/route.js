@@ -21,7 +21,7 @@ export async function POST() {
         const {nome} = await requestAnimationFrame.json();
         const sql = "insert into compra(nome) values (?)"
         const [result] = await db.query(sql, [nome]);
-        return NextResponse.json({id: result.insertId, nome})
+        return NextResponse.json({id: result[0].insertId, nome})
     }catch(erro){
         console.log(erro)
         return NextResponse.json({erro: erro.message})

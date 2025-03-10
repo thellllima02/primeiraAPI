@@ -18,8 +18,8 @@ export async function POST(){
     try{
         const db = await createConnection()
         const sql = "insert into produto(nome, preco, quantidade) values(?,?,?)"
-        const [result] = await db.query(sql, [nome, preco, quantidade]);
-        return NextResponse.json({id: result.insertId, nome, preco, quantidade})
+        const result = await db.query(sql, [nome, preco, quantidade]);
+        return NextResponse.json({id: result[0].insertId, nome, preco, quantidade})
 
     }catch(erro){
         console.log(erro)

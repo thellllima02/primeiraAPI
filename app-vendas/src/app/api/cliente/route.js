@@ -8,6 +8,7 @@ export async function GET() {
         const sql = "select * from cliente"
         const [cliente] = await db.query(sql)
         return NextResponse.json(cliente)
+
     }catch(erro){
         console.log(erro)
         return NextResponse.json({erro: erro.message})
@@ -19,7 +20,7 @@ export async function POST(req){
         const db = await createConnection();
         const { nome, endereco, cidade } = await req.json();
         const sql = "INSERT INTO cliente (nome, endereco, cidade) VALUES (?, ?, ?)";
-        const result = await db.query(sql, [nome, endereco, cidade]); 
+        const [result] = await db.query(sql, [nome, endereco, cidade]); 
 
         // Certifique-se de que `result` está correto
         if (!result || !result[0]) {

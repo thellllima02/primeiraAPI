@@ -21,12 +21,6 @@ export async function POST(req){
         const { nome, endereco, cidade } = await req.json();
         const sql = "INSERT INTO cliente (nome, endereco, cidade) VALUES (?, ?, ?)";
         const [result] = await db.query(sql, [nome, endereco, cidade]); 
-
-        // Certifique-se de que `result` está correto
-        if (!result || !result[0]) {
-            throw new Error("Erro ao inserir no banco de dados.");
-        }
-
         return NextResponse.json({ id: result[0].insertId, nome, endereco, cidade });
 
     } catch (erro) {
@@ -34,7 +28,7 @@ export async function POST(req){
         return NextResponse.json({ erro: erro.message });
     }
 }
-
+//Foi preciso colocar isso para evitar o CORS
 export async function OPTIONS() {
     return NextResponse.json(null, {
         headers: {

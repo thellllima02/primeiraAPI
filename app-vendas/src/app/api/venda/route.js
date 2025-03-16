@@ -25,3 +25,13 @@ export async function POST(req){
         return NextResponse.json({erro: erro.message})
     }
 }
+//Foi preciso colocar isso para evitar o CORS
+export async function OPTIONS() {
+    return NextResponse.json(null, {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+        },
+    });
+}

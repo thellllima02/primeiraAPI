@@ -1,37 +1,45 @@
-import { createConnection } from "../../lib/mysql.js";
-import { NextResponse } from "next/server";
+import { createConnection } from '../../lib/mysql.js';
+import { NextResponse } from 'next/server';
 
-export async function GET(){
-    try{
-        const db = await createConnection()
-        const sql = "select * from categoria"
-        const [categoria] = await db.query(sql)
-        return NextResponse.json(categoria)
-    }catch(erro){
-        console.log(erro)
-        return NextResponse.json({erro: erro.message})
-    }
-}
-
-export async function POST (req){
-    try{
+export async function GET() {
+    try {
         const db = await createConnection();
-        const {nome} = await req.json();
-        const sql = "INSERT INTO categoria (nome) VALUES(?)"
-        const [result] = await db.query(sql, [nome]);
-        return NextResponse.json({id: result[0].inserId, nome})
-    }catch(erro){
-        console.log(erro)
-        return NextResponse.json({erro: erro.message})
+        const sql = 'SELECT * FROM categoria';
+        const [categoria] = await db.query(sql);
+
+        return NextResponse.json(categoria);
+    } catch (erro) {
+        console.error('Erro no GET:', erro);
+        return NextResponse.json({ erro: erro.message }, { status: 500 });
     }
 }
-//Foi preciso colocar isso para evitar o CORS
+
+export async function POST(req) {
+    try {
+        const db = await createConnection();
+        const sql = 'INSERT INTO categoria (nome) VALUES (?)';
+        const { nome } = await req.json();
+        await db.query(sql, [nome]);
+        return NextResponse.json({ message: 'Categoria inserida com sucesso!' }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+            },
+        });
+    } catch (erro) {
+        console.error('Erro no POST:', erro);
+        return NextResponse.json({ erro: erro.message }, { status: 500 });
+    }
+}
+
+// CORS - Permitir requisições do frontend
 export async function OPTIONS() {
     return NextResponse.json(null, {
         headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
         },
     });
 }

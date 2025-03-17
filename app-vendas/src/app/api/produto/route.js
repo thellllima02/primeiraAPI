@@ -17,14 +17,19 @@ export async function GET() {
 export async function POST(req){
     try{
         const db = await createConnection();
-        const {nome, preco, quantidade} = await req.json();
         const sql = "insert into produto(nome, preco, quantidade) values(?,?,?)"
-        const result = await db.query(sql, [nome, preco, quantidade]);
-        return NextResponse.json({id: result[0].insertId, nome, preco, quantidade})
-
-    }catch(erro){
-        console.log(erro)
-        return NextResponse.json({erro: erro.messge})
+        const {nome, preco, quantidade} = await req.json();
+        await db.query(sql, [nome, preco, quantidade]);
+        return NextResponse.json({ message: 'Produto inserido com sucesso!' }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+            },
+        });
+    } catch (erro) {
+        console.error('Erro no POST:', erro);
+        return NextResponse.json({ erro: erro.message }, { status: 500 });
     }
 }
 //Foi preciso colocar isso para evitar o CORS

@@ -16,7 +16,7 @@ export async function GET() {
 export async function POST(req){
     try{
         const db = await createConnection();
-        const {nome, endereco, cidade} = await req.json();
+        const {valor} = await req.json();
         const sql = "insert into venda(valor) values(?)"
         const result = await db.query(sql, [valor]);
         return NextResponse.json({id: result[0].insertId, valor})

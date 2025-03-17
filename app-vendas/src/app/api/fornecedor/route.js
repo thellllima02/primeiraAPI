@@ -12,7 +12,7 @@ export async function GET(){
         return NextResponse.json({erro: erro.message})
     }
 }
-export async function POST(){
+export async function POST(req){
     try{
         const db = await createConnection()
         const {nome, endereco, cidade, empresa} = await req.json();

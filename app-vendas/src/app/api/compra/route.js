@@ -15,11 +15,11 @@ export async function GET(){
     
 }
 
-export async function POST() {
+export async function POST(req) {
     try{
         const db = await createConnection()
-        const {nome} = await requestAnimationFrame.json();
-        const sql = "insert into compra(nome) values (?)"
+        const {nome} = await req.json();
+        const sql = "INSERT INTO compra(nome) VALUES (?)"
         const [result] = await db.query(sql, [nome]);
         return NextResponse.json({id: result[0].insertId, nome})
     }catch(erro){

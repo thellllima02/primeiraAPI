@@ -1,0 +1,59 @@
+.body {
+    background: rgb(70, 142, 236);
+    font: normal 15pt Arial;
+}
+
+.header {
+    text-align: center;
+
+}
+
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 5px 5px 10px black;
+    /*--Sombra*/
+}
+
+.div {
+    text-align: center;
+    padding: 9px;
+}
+
+.footer {
+    text-align: center;
+    font-style: italic;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.th,
+.td {
+    border: 1px solid #030303;
+    padding: 10px;
+    text-align: center;
+}
+
+.th {
+    background-color: #686564;
+    color: white;
+}
+.tr{
+    background-color: #eeec93;
+}
+
+.tr:nth-child(even) {
+    background-color: #b6ca91;
+}
+
+.tr:hover {
+    background-color: #ddd;
+    transition: 0.3s;
+}

@@ -61,7 +61,7 @@ Certifique-se de ter os seguintes itens instalados na sua máquina:
 1. Clone o repositório:
 
 ```bash
-    git clone https://github.com/thellllima02/primeiraapi.git
+    git clone https://github.com/thellllima02/primeiraAPI.git
 ```
 
 2. Acesse o diretório do projeto:

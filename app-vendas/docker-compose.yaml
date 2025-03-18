@@ -1,3 +1,4 @@
+
 version: '3.5'
 
 services:
@@ -5,9 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: c-app-vendas
+    container_name: c-app-vendas-herc
     ports:
-      - "3030:3000"
+      - "3133:3000"
     volumes:
       - .:/app
       - ./node_modules:/app/node_modules
@@ -16,18 +17,18 @@ services:
 
   db:
     image: mariadb:10.3
-    container_name: c-mariadb-vendas
+    container_name: c-mariadb-vendas-herc
     environment:
       - MYSQL_ROOT_PASSWORD=bsi-vendas
     ports:
-      - "3031:3306"
+      - "3134:3306"
     volumes:
       - ./data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: c-phpmyadmin-vendas
+    container_name: c-phpmyadmin-vendas-herc
     environment:
       - MYSQL_ROOT_PASSWORD=bsi-vendas
     ports:
-      - "3032:80"
+      - "3135:80"

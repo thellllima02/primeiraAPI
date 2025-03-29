@@ -82,11 +82,11 @@ Certifique-se de ter os seguintes itens instalados na sua máquina:
 4. Crie um arquivo chamado .env na raiz do seu projeto.
 
 ```bash
-MYSQL_HOST=localhost
-MYSQL_USER=seu_usuario
-MYSQL_PASSWORD=sua_senha
-MYSQL_NAME=seu_banco_de_dados
-MYSQL_PORT=3306
+MYSQL_HOST="host.docker.internal"
+MYSQL_USER="seu_usuario"
+MYSQL_PASSWORD="sua_senha"
+MYSQL_NAME="seu_banco_de_dados"
+MYSQL_PORT="3031"
 ```
 
 5. Inicie o conteiner :

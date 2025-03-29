@@ -1,6 +1,7 @@
 # primeiraAPI
 
-Criando a primeiras API para ser usado tanto em Web quanto mobile
+Projeto criado para as diciplinas de WEB e Mobile, onde criamos apis para consumir o banco de dados, com os metodos GET e POST. 
+Futuramente vai ser implementados outros metodos.
 
 ##Link para baixar a imagem Docker
 https://hub.docker.com/r/thelllima02/app-vendas_app

@@ -3,8 +3,7 @@
 Criando a primeiras API para ser usado tanto em Web quanto mobile
 
 ##Link para baixar a imagem Docker
-
-https://hub.docker.com/r/thellllima02/api-mercado-app
+https://hub.docker.com/r/thelllima02/app-vendas_app
 
 # PrimeiraAPI - Sistema de Gestão de Vendas
 

@@ -1,5 +1,6 @@
 # primeiraAPI
- Criando a primeiras API para ser usado tanto em Web quanto mobile 
+
+Criando a primeiras API para ser usado tanto em Web quanto mobile
 
 ##Link para baixar a imagem Docker
 
@@ -80,18 +81,20 @@ Certifique-se de ter os seguintes itens instalados na sua máquina:
 
 4. Crie um arquivo chamado .env na raiz do seu projeto.
 
+```bash
 MYSQL_HOST=localhost
 MYSQL_USER=seu_usuario
 MYSQL_PASSWORD=sua_senha
 MYSQL_NAME=seu_banco_de_dados
 MYSQL_PORT=3306
-
+```
 
 5. Inicie o conteiner :
 
 ```bash
   docker-compose up -d
 ```
+
 A aplicação estará disponível em: `http://localhost:3030`
 O Banco de dados estará disponível em: `http://localhost:3031`
 O PHP Admin estará disponível em: `http://localhost:3032`
@@ -112,5 +115,3 @@ Este projeto está sob a licença MIT. Sinta-se livre para contribuir!
 ---
 
 Feito por [Hércules Silva](https://github.com/thellllima02)
-
-

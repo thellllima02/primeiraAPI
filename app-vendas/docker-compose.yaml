@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: c-app-vendas-herc
     ports:
-      - "3133:3000"
+      - "3030:3000"
     volumes:
       - .:/app
       - ./node_modules:/app/node_modules
@@ -21,7 +21,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=bsi-vendas
     ports:
-      - "3134:3306"
+      - "3031:3306"
     volumes:
       - ./data:/var/lib/mysql
 
@@ -31,4 +31,4 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=bsi-vendas
     ports:
-      - "3135:80"
+      - "3032:80"

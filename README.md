@@ -78,14 +78,16 @@ Certifique-se de ter os seguintes itens instalados na sua máquina:
     yarn install
 ```
 
-4. Inicie o servidor de desenvolvimento:
+4. Crie um arquivo chamado .env na raiz do seu projeto.
 
-```bash
-    npm run start:dev
-```
-A aplicação estará disponível em: `http://localhost:3000`
+MYSQL_HOST=localhost
+MYSQL_USER=seu_usuario
+MYSQL_PASSWORD=sua_senha
+MYSQL_NAME=seu_banco_de_dados
+MYSQL_PORT=3306
 
-ou 
+
+5. Inicie o conteiner :
 
 ```bash
   docker-compose up -d
@@ -109,6 +111,6 @@ Este projeto está sob a licença MIT. Sinta-se livre para contribuir!
 
 ---
 
-Feito com 💙 por [Hércules Silva](https://github.com/thellllima02)
+Feito por [Hércules Silva](https://github.com/thellllima02)
 
 

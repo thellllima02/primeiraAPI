@@ -1,67 +1,83 @@
-'use client'
+"use client";
 import React, { useState } from "react";
-import CustonLink from "../../components/link/page";
-import styles from "../styles.module.css"
-import Input from "../../components/input/page";
-import Button from "../../components/button/page";
+import CustonLink from "../../../components/link/page";
+import styles from "../styles.module.css";
+import Input from "../../../components/input/page";
+import Button from "../../../components/botao/botao";
 
 export default function CreateProduto() {
-    const [formData, setFormData] = useState({ nome: "", preco: "", quantidade: "" });
+  const [formData, setFormData] = useState({
+    nome: "",
+    preco: "",
+    quantidade: "",
+  });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-    };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
+    if (!formData.nome || !formData.preco || !formData.quantidade) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+    try {
+      const response = await fetch("http://localhost:3030/api/produto", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log("Resposta da API:", result);
+      if (!response.ok) {
+        throw new Error(result.erro || "Erro ao salvar os dados!");
+      }
 
-        if (!formData.nome || !formData.preco || !formData.quantidade) {
-            alert('Preencha todos os campos!')
-            return;
-        }
-        try {
-            const response = await fetch('http://localhost:3030/api/produto', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-            const result = await response.json();
-            console.log('Resposta da API:', result)
-            if (!response.ok) {
-                throw new Error(result.erro || 'Erro ao salvar os dados!');
-            }
-
-            alert('Dados salvos com sucesso!');
-            setFormData({ nome: "", preco: "", quantidade: "" });
-
-        } catch (error) {
-            console.error('POST error:', error);
-            setFormData(error.message);
-        }
-    };
-    return (
-        <body className={styles.body}>
-            <div className={styles.div}>
-                <header className={styles.header}>
-                    <h1 >Página de Produto</h1>
-                </header>
-                <section className={styles.section}>
-                    <form onSubmit={(event) => handleSubmit(event)} >
-                        <Input placeholder="Nome do Fornecedor " name="nome" value={formData.nome} onChange={handleChange} />
-                        <Input placeholder="Preço" name="preco" value={formData.preco} onChange={handleChange} />
-                        <Input placeholder="Quantidade" name="quantidade" value={formData.quantidade} onChange={handleChange} />
-                        <Button type="submit" label="Salvar" />
-                        <CustonLink href="./" label="Voltar"></CustonLink>
-                    </form>
-                </section>
-                <footer className={styles.footer}>
-                    <p>© 2025 Hércules Silva. Todos os direitos reservados.</p>
-                </footer>
-            </div>
-        </body>
-    );
-
+      alert("Dados salvos com sucesso!");
+      setFormData({ nome: "", preco: "", quantidade: "" });
+    } catch (error) {
+      console.error("POST error:", error);
+      setFormData(error.message);
+    }
+  };
+  return (
+    <body className={styles.body}>
+      <div className={styles.div}>
+        <header className={styles.header}>
+          <h1>Página de Produto</h1>
+        </header>
+        <section className={styles.section}>
+          <form onSubmit={(event) => handleSubmit(event)}>
+            <Input
+              placeholder="Nome do Fornecedor "
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+            />
+            <Input
+              placeholder="Preço"
+              name="preco"
+              value={formData.preco}
+              onChange={handleChange}
+            />
+            <Input
+              placeholder="Quantidade"
+              name="quantidade"
+              value={formData.quantidade}
+              onChange={handleChange}
+            />
+            <Button type="submit" label="Salvar" />
+            <CustonLink href="./" label="Voltar"></CustonLink>
+          </form>
+        </section>
+        <footer className={styles.footer}>
+          <p>© 2025 Hércules Silva. Todos os direitos reservados.</p>
+        </footer>
+      </div>
+    </body>
+  );
 }

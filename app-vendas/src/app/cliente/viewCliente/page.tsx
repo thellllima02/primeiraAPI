@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import CustonLink from "../../components/link/page";
+import CustonLink from "../../../components/link/page";
 import styles from "../styles.module.css";
 
 export default async function ViewCliente() {

@@ -1,5 +1,5 @@
-import styles from "./page.module.css"
-import CustonLink from "./components/link/page";
+import styles from "./page.module.css";
+import CustonLink from "../components/link/page";
 
 export default function Home() {
   return (
@@ -11,12 +11,29 @@ export default function Home() {
         </header>
         <section>
           <nav className={styles.section}>
-            <CustonLink href="./cliente" label="Clientes"> </CustonLink>
-            <CustonLink href="./fornecedor" label="Fornecedores"> Fornecedores </CustonLink>
-            <CustonLink href="./produto" label="Produtos"> Produtos </CustonLink>
-            <CustonLink href="./categoria" label="Categorias"> Categorias </CustonLink>
-            <CustonLink href="./compra" label="Compras"> Compras </CustonLink>
-            <CustonLink href="./venda" label="Vendas"> Vendas </CustonLink>
+            <CustonLink href="./cliente" label="Clientes">
+              {" "}
+            </CustonLink>
+            <CustonLink href="./fornecedor" label="Fornecedores">
+              {" "}
+              Fornecedores{" "}
+            </CustonLink>
+            <CustonLink href="./produto" label="Produtos">
+              {" "}
+              Produtos{" "}
+            </CustonLink>
+            <CustonLink href="./categoria" label="Categorias">
+              {" "}
+              Categorias{" "}
+            </CustonLink>
+            <CustonLink href="./compra" label="Compras">
+              {" "}
+              Compras{" "}
+            </CustonLink>
+            <CustonLink href="./venda" label="Vendas">
+              {" "}
+              Vendas{" "}
+            </CustonLink>
           </nav>
         </section>
         <footer className={styles.footer}>
@@ -24,5 +41,5 @@ export default function Home() {
         </footer>
       </div>
     </body>
-  )
+  );
 }

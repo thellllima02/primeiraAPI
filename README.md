@@ -6,6 +6,9 @@ Futuramente vai ser implementados outros metodos.
 ##Link para baixar a imagem Docker
 https://hub.docker.com/r/thelllima02/app-vendas_app
 
+##Link do Vercel 
+https://primeira-api.vercel.app/
+
 # PrimeiraAPI - Sistema de Gestão de Vendas
 
 Este projeto é uma aplicação desenvolvida em **NestJS** para gerenciar vendas, produtos, clientes, fornecedores e categorias.

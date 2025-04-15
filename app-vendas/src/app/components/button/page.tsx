@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './button.module.css';
 
 interface ButtonProps {
-    label: any;
+    label: React.ReactNode;
     type?: "button" | "submit" | "reset";
 }
 
